@@ -1,0 +1,1 @@
+create table Cardb(id serial primary key ,name varchar(12),color varchar(12))

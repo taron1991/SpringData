@@ -11,12 +11,12 @@ import javax.servlet.ServletRegistration;
 public class WebConfig implements WebApplicationInitializer {
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
-        AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
-        ctx.register(AppContext.class);
-        ctx.setServletContext(servletContext);
+        AnnotationConfigWebApplicationContext web = new AnnotationConfigWebApplicationContext();
+        web.register(AppContext.class);
+        web.setServletContext(servletContext);
 
-        ServletRegistration.Dynamic servletRegistration = servletContext.addServlet("dispatcher", new DispatcherServlet(ctx));
-        servletRegistration.setLoadOnStartup(1);
-        servletRegistration.addMapping("/");
+        ServletRegistration.Dynamic dynamic = servletContext.addServlet("dispatcher",new DispatcherServlet(web));
+        dynamic.setLoadOnStartup(1);
+        dynamic.addMapping("/");
     }
 }
