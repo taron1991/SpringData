@@ -3,9 +3,10 @@ package spring.app.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import spring.app.models.Car;
-import spring.app.repositories.CarRepository;
+import spring.app.repositories.SpringDataCarRepository;
+import spring.app.repositories.SpringJdbcRepository;
+import spring.app.repositories.SpringORMrepository;
 
-import java.io.OptionalDataException;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,10 +14,10 @@ import java.util.Optional;
 public class CarService {
 
 
-    private CarRepository carRepository;
+    private SpringJdbcRepository carRepository;
 
     @Autowired
-    public CarService(CarRepository carRepository) {
+    public CarService(SpringJdbcRepository carRepository) {
         this.carRepository = carRepository;
     }
 
@@ -24,13 +25,7 @@ public class CarService {
         return carRepository.findAll();
     }
 
-
-    public Optional<Car> getId(int id) {
-        Optional<Car> byId = carRepository.findById(id);
-        return byId;
-    }
-
-    public List<Car> findByNames(String name) {
+    public List<Car> findByName(String name) {
         return carRepository.findByName(name);
     }
 
@@ -39,8 +34,8 @@ public class CarService {
 
     }
 
-    public Car save(Car car) {
-        return carRepository.save(car);
+    public void save(Car car) {
+         carRepository.save(car);
     }
 
 
@@ -50,11 +45,11 @@ public class CarService {
     }
 
     public List<Car> moreThan(int price){
-        return carRepository.morethan(price);
+        return carRepository.moreThan(price);
     }
 
-
-    public List<Car> getCars(String color){
-        return carRepository.getCarsByColor(color);
+    public List<Car> lessThan(int price){
+        return carRepository.lessThan(price);
     }
+
 }

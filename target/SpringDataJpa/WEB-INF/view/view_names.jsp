@@ -2,10 +2,10 @@
 <html>
 <body>
 <table>
-    <c:forEach var="namess" items="${names}">
+    <c:forEach var="car" items="${names}">
         <tr>
-            <th>${namess.name}</th>
-            <th>${namess.color}</th>
+            <th>${car.name}</th>
+            <th>${car.color}</th>
         </tr>
 
     </c:forEach>

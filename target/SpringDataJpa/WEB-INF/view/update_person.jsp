@@ -2,12 +2,12 @@
 <html>
 <body>
 
-<c:forEach var="cycle" items="${allcars}">
+<c:forEach var="cars" items="${allcars}">
 
     <tr>
-        <th> ${cycle.name}</th>
-        <th> ${cycle.color}</th>
-        <th> ${cycle.price}</th>
+        <th> ${cars.name}</th>
+        <th> ${cars.color}</th>
+        <th> ${cars.price}</th>
     </tr>
 
 </c:forEach>
